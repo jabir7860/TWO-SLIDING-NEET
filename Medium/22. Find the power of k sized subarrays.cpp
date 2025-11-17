@@ -33,3 +33,35 @@ public:
 };
 TC : O(N*K) where k is size of internal subarray that is formed; 
 SC : O(N) 
+
+
+    class Solution {
+public:
+    vector<int> resultsArray(vector<int>& nums, int k) {
+        int l=0,r=1,n=nums.size(); 
+        if(k==1) return nums; 
+        vector<int>ans; 
+        int count=1; 
+        while(r<n){
+            if(nums[r]-1==nums[r-1]){
+                count++; 
+            }
+            else{
+                count=1; 
+            } 
+            if(r>=k-1){
+                if(count>=k){
+                    ans.push_back(nums[r]); 
+                }
+                else{
+                    ans.push_back(-1); 
+                }
+            }
+            r++;
+        }
+        return ans;   
+    }
+};
+
+tc :o(n) 
+sc : o(k)
